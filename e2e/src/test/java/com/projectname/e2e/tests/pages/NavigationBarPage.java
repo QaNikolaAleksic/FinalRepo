@@ -58,4 +58,72 @@ public class NavigationBarPage extends PageBase {
         getFlightsBtn().click();
         return new FlightsPage(driver, url, email, password);
     }
+
+    private WebElement getCarsBtn() {
+        getFeaturesBtn().click();
+        try {
+            return driver.findElement(CustomBy.xpath("/html/body/div[2]/div/div[3]/ul/li[3]/div/ul/li[6]/a/span"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new AssertionError("Could not find cars button on Navigation bar page", e);
+        }
+    }
+
+    public CarsPage openCarsPage() {
+        getCarsBtn().click();
+        return new CarsPage(driver, url, email, password);
+    }
+
+    private WebElement getHotelsBtn() {
+        getFeaturesBtn().click();
+        try {
+            return driver.findElement(CustomBy.xpath("/html/body/div[2]/div/div[3]/ul/li[3]/div/ul/li[3]/a/span"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new AssertionError("Could not find hotels button on Navigation bar page", e);
+        }
+    }
+
+    public HotelsPage openHotelsPage() {
+        getHotelsBtn().click();
+        return new HotelsPage(driver, url, email, password);
+    }
+
+    private WebElement getPricingBtn() {
+        try {
+            return driver.findElement(CustomBy.xpath("/html/body/div[2]/div/div[3]/ul/li[2]/a"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new AssertionError("Could not find pricing button on Navigation bar page", e);
+        }
+    }
+
+    public PricingPage openPricingPage() {
+        getPricingBtn().click();
+        return new PricingPage(driver, url, email, password);
+    }
+
+    private WebElement getCompanyBtn() {
+        try {
+            return driver.findElement(CustomBy.xpath("/html/body/div[2]/div/div[3]/ul/li[5]/a"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new AssertionError("Could not find company button on Navigation bar page", e);
+        }
+    }
+
+    private WebElement getYoutubeBtn() {
+        getCompanyBtn().click();
+        try {
+            return driver.findElement(CustomBy.xpath("//*[@id=\"jfHeaderForumLink\"]"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new AssertionError("Could not find youtube button on Navigation bar page", e);
+        }
+    }
+
+    public YoutubePage openYoutubePage() {
+        getYoutubeBtn().click();
+        return new YoutubePage(driver, url, email, password);
+    }
 }
